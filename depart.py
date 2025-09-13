@@ -119,45 +119,45 @@ def est_gagnant(plateau, col, joueur):
 
     return False
 
-def main():
-    # Améliorer le visuel avec pygame
-    # Faire quelque chose pour demander si les joueurs veulent bien donner leur prénom
-    # Peut-être faire un bot avec lequel on peut jouer contre (plusieurs niveaux ?)
+# def main():
+#     # Améliorer le visuel avec pygame
+#     # Faire quelque chose pour demander si les joueurs veulent bien donner leur prénom
+#     # Peut-être faire un bot avec lequel on peut jouer contre (plusieurs niveaux ?)
 
-    nb_coup = 0
-    joueur = 2
-    un_gagnant = False
-    col_est_correcte = True
-    plateau_jeu = initialiser_plateau()
-    while not un_gagnant:
-        # On change le joueur qui doit jouer
-        if joueur == 1:
-            joueur = 2
-        else:
-            joueur = 1
+#     nb_coup = 0
+#     joueur = 2
+#     un_gagnant = False
+#     col_est_correcte = True
+#     plateau_jeu = initialiser_plateau()
+#     while not un_gagnant:
+#         # On change le joueur qui doit jouer
+#         if joueur == 1:
+#             joueur = 2
+#         else:
+#             joueur = 1
             
-        print("Voici le plateau de jeu :")
-        afficher_plateau(plateau_jeu)
-        col = input(f"Joueur {joueur}, choisissez la colonne entre 1 et 7 : ")
-        col_est_correcte = col_correcte(col)
-        while not col_est_correcte:
-            col = input(f"Joueur {joueur}, choisissez la colonne entre 1 et 7 : ")
-            col_est_correcte = col_correcte(col)
+#         print("Voici le plateau de jeu :")
+#         afficher_plateau(plateau_jeu)
+#         col = input(f"Joueur {joueur}, choisissez la colonne entre 1 et 7 : ")
+#         col_est_correcte = col_correcte(col)
+#         while not col_est_correcte:
+#             col = input(f"Joueur {joueur}, choisissez la colonne entre 1 et 7 : ")
+#             col_est_correcte = col_correcte(col)
 
-        joue_coup(plateau_jeu, int(col)-1, joueur)
-        un_gagnant = est_gagnant(plateau_jeu, int(col)-1, joueur)
+#         joue_coup(plateau_jeu, int(col)-1, joueur)
+#         un_gagnant = est_gagnant(plateau_jeu, int(col)-1, joueur)
         
-        # On vérifie qu'on n'a pas rempli toute la grille
-        nb_coup += 1
-        if nb_coup == 42:
-            break
+#         # On vérifie qu'on n'a pas rempli toute la grille
+#         nb_coup += 1
+#         if nb_coup == 42:
+#             break
     
-    afficher_plateau(plateau_jeu)
-    if nb_coup == 42:
-        print("Bravo aux deux joueurs ! Egalité parfaite !")
-    elif joueur == 1:
-        print("Bravo joueur 1, tu as gagné !")
-    else:
-        print("Bravo joueur 2, tu as gagné !")
+#     afficher_plateau(plateau_jeu)
+#     if nb_coup == 42:
+#         print("Bravo aux deux joueurs ! Egalité parfaite !")
+#     elif joueur == 1:
+#         print("Bravo joueur 1, tu as gagné !")
+#     else:
+#         print("Bravo joueur 2, tu as gagné !")
 
-main()
+# main()
