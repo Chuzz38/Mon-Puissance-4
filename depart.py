@@ -24,18 +24,18 @@ def afficher_plateau(plateau):
         print(" -----------------------------")
     print("   1   2   3   4   5   6   7")
 
+
 def joue_coup(plateau, col, joueur):
-    # Le joueur 1 ou 2 choisi la colonne dans laquelle il joue
+    """
+    Le joueur 1 ou 2 a choisi la colonne col dans laquelle il a joué et renvoie 
+    True si le coup est bien possible et False sinon (dans le cas où la colonne)
+    est complète
+    """
     for ligne in reversed(plateau):
         if ligne[col] == 0:
             ligne[col] = joueur
-            return
-
-def col_correcte(col):
-    if "1" <= col <= "7":
-        return True
-    else:
-        return False
+            return True
+    return False
     
 
 def ligne_coup(plateau, col):
@@ -44,6 +44,7 @@ def ligne_coup(plateau, col):
         if ligne[col] != 0:
             return i
 
+
 def est_gagnant(plateau, col, joueur):
     """
     Fonction qui renvoie le gagnant s'il y en a un avec le dernier coup il faut regarder
@@ -51,7 +52,6 @@ def est_gagnant(plateau, col, joueur):
     Fonction qui pourra sûrement être amélioré et rendu plus efficace/optimisé
     """ 
     # Si la dernière case a été atteinte et qu'il n'y a pas eu de gagnant dire qu'il y a eu égalité
-    # le tableau contient soit des 0, des 1 ou des 2
     total_joueur = 1
     ligne = ligne_coup(plateau, col)
     

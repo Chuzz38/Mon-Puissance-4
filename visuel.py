@@ -13,9 +13,12 @@ clock = pygame.time.Clock()
 running = True
 pressed = False
 
-plateau_jeu = depart.initialiser_plateau()
 joueur = 1
+egalite = False
 a_un_gagnant = False
+bon_coup = True
+nb_coups = 0
+plateau_jeu = depart.initialiser_plateau()
 
 def afficher(plateau):
     for lig in range(6):
@@ -35,30 +38,35 @@ while running:
             running = False
 
     # RENDER YOUR GAME HERE
-    if not pressed and pygame.mouse.get_pressed()[0] and not a_un_gagnant:
+    if not pressed and pygame.mouse.get_pressed()[0] and not a_un_gagnant and not egalite:
         pressed = True
         pos = pygame.mouse.get_pos()
         col = pos[0]//100
         
     if pressed and not pygame.mouse.get_pressed()[0]:
         pressed = False
-        depart.joue_coup(plateau_jeu, col, joueur)
+        bon_coup = depart.joue_coup(plateau_jeu, col, joueur)
         
-        if depart.est_gagnant(plateau_jeu, col, joueur):
-            a_un_gagnant = True
+        if bon_coup:
+            nb_coups += 1
+            if nb_coups == 42:
+                egalite = True
+            
+            if depart.est_gagnant(plateau_jeu, col, joueur):
+                a_un_gagnant = True
+                if joueur == 1:
+                    print("#######################")
+                    print("# Bravo au joueur 1 ! #")
+                    print("#######################")
+                else:
+                    print("#######################")
+                    print("# Bravo au joueur 2 ! #")
+                    print("#######################")
+        
             if joueur == 1:
-                print("#######################")
-                print("# Bravo au joueur 1 ! #")
-                print("#######################")
+                joueur = 2
             else:
-                print("#######################")
-                print("# Bravo au joueur 2 ! #")
-                print("#######################")
-        
-        if joueur == 1:
-            joueur = 2
-        else:
-            joueur = 1
+                joueur = 1
         
     
     afficher(plateau_jeu)
