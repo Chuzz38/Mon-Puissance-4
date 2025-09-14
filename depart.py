@@ -50,8 +50,7 @@ def est_gagnant(plateau, col, joueur):
     Fonction qui renvoie le gagnant s'il y en a un avec le dernier coup il faut regarder
     horizontalement, verticalement et sur les diagonales.
     Fonction qui pourra sûrement être amélioré et rendu plus efficace/optimisé
-    """ 
-    # Si la dernière case a été atteinte et qu'il n'y a pas eu de gagnant dire qu'il y a eu égalité
+    """
     total_joueur = 1
     ligne = ligne_coup(plateau, col)
     
@@ -120,7 +119,6 @@ def est_gagnant(plateau, col, joueur):
     return False
 
 # def main():
-#     # Améliorer le visuel avec pygame
 #     # Faire quelque chose pour demander si les joueurs veulent bien donner leur prénom
 #     # Peut-être faire un bot avec lequel on peut jouer contre (plusieurs niveaux ?)
 
